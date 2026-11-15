@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cq7rncf4bqb5a"]
 
-[ext_resource type="Script" uid="uid://cstovht1io1nv" path="res://scenes/bullet.gd" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://cstovht1io1nv" path="res://scripts/bullet.gd" id="1_mkf8s"]
 [ext_resource type="Texture2D" uid="uid://5g0yufkuf0w1" path="res://assets/bullet.png" id="2_y25gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1aey"]
@@ -8,7 +8,7 @@ size = Vector2(77, 30)
 
 [node name="bullet" type="CharacterBody2D" unique_id=1368276833]
 collision_layer = 4
-collision_mask = 18
+collision_mask = 50
 script = ExtResource("1_mkf8s")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1649459024]
@@ -24,6 +24,9 @@ shape = SubResource("RectangleShape2D_h1aey")
 [node name="Hitbox" type="Area2D" parent="." unique_id=1424250225]
 collision_layer = 0
 collision_mask = 4
+
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-100, -100, 200, 200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=10227082]
 position = Vector2(8, -2)

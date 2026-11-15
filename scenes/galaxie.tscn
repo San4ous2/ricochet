@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://tn8p5hpnmklm"]
+[gd_scene format=3 uid="uid://b576wemua7dhp"]
+
+[ext_resource type="Texture2D" uid="uid://bg52devbvmfmn" path="res://assets/galaxie.png" id="1_bv3us"]
 
 [node name="Galaxie" type="Node2D" unique_id=1601947068]
+
+[node name="Galaxie" type="Sprite2D" parent="." unique_id=1798813011]
+position = Vector2(2172, -1130)
+scale = Vector2(8.472656, 4.4501953)
+texture = ExtResource("1_bv3us")

@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://ihkoskfdyot2"]
 
 [ext_resource type="Texture2D" uid="uid://b88yiyk1blb1p" path="res://assets/zombie_walk.png" id="1_1vlb3"]
-[ext_resource type="Script" uid="uid://c0v3w2sdu48nf" path="res://scenes/zombie.gd" id="1_httt1"]
+[ext_resource type="Script" uid="uid://c0v3w2sdu48nf" path="res://scripts/zombie.gd" id="1_httt1"]
 [ext_resource type="Texture2D" uid="uid://b0xkfclibxdx7" path="res://assets/zombie_death.png" id="2_4gx57"]
 [ext_resource type="Texture2D" uid="uid://bu4xmhyltd15n" path="res://assets/punch.png" id="2_xepks"]
+[ext_resource type="Texture2D" uid="uid://cdbv15xcacckn" path="res://assets/Attack_flying.png" id="3_aetfh"]
 [ext_resource type="Texture2D" uid="uid://b8c17e1dqxjrx" path="res://assets/Hurt.png" id="3_ycv6i"]
+[ext_resource type="AudioStream" path="res://assets/music/terraria-zombie.mp3" id="4_hurtsnd"]
+[ext_resource type="Texture2D" uid="uid://bsmlt44cref1g" path="res://assets/Dead_flying.png" id="4_jjlcg"]
+[ext_resource type="Texture2D" uid="uid://bsqv817jfipvw" path="res://assets/Hurt_flying.png" id="5_iblsu"]
+[ext_resource type="Texture2D" uid="uid://dj6jm1tkr2s3a" path="res://assets/flying_walk.png" id="6_ida1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_httt1"]
 size = Vector2(118, 251)
@@ -28,6 +33,82 @@ region = Rect2(384, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fsw7"]
 atlas = ExtResource("2_4gx57")
 region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_118du"]
+atlas = ExtResource("3_aetfh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6vye"]
+atlas = ExtResource("3_aetfh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul64k"]
+atlas = ExtResource("3_aetfh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujrmm"]
+atlas = ExtResource("3_aetfh")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr53x"]
+atlas = ExtResource("4_jjlcg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcyai"]
+atlas = ExtResource("4_jjlcg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_himce"]
+atlas = ExtResource("4_jjlcg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6op8g"]
+atlas = ExtResource("4_jjlcg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dw3m"]
+atlas = ExtResource("4_jjlcg")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btfsa"]
+atlas = ExtResource("5_iblsu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej0ax"]
+atlas = ExtResource("5_iblsu")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jljr"]
+atlas = ExtResource("5_iblsu")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbd4i"]
+atlas = ExtResource("5_iblsu")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3oae"]
+atlas = ExtResource("6_ida1p")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wa4o"]
+atlas = ExtResource("6_ida1p")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6twh"]
+atlas = ExtResource("6_ida1p")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb8mr"]
+atlas = ExtResource("6_ida1p")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln2kq"]
+atlas = ExtResource("6_ida1p")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_turgy"]
+atlas = ExtResource("6_ida1p")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1nid1"]
 atlas = ExtResource("3_ycv6i")
@@ -125,6 +206,83 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_118du")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6vye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul64k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujrmm")
+}],
+"loop": 0,
+"name": &"flying_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr53x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcyai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_himce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6op8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dw3m")
+}],
+"loop": 0,
+"name": &"flying_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btfsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej0ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jljr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbd4i")
+}],
+"loop": 0,
+"name": &"flying_hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3oae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wa4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6twh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb8mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln2kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_turgy")
+}],
+"loop": 1,
+"name": &"flying_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1nid1")
 }, {
 "duration": 1.0,
@@ -198,6 +356,9 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_httt1")
 
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hurtsnd")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2063889606]
 position = Vector2(8, -125.5)
 shape = SubResource("RectangleShape2D_httt1")
@@ -207,5 +368,4 @@ texture_filter = 1
 position = Vector2(30, -237)
 scale = Vector2(3.7568355, 3.7021492)
 sprite_frames = SubResource("SpriteFrames_u6hpf")
-animation = &"walk"
-frame_progress = 0.16384934
+animation = &"flying_walk"

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 100
-const DAMAGE = 67
+const SPEED = 80
+const DAMAGE = 34
 const ATTACK_DISTANCE = 200
 const ATTACK_TIME = 1.0
 
@@ -10,20 +10,21 @@ const ATTACK_TIME = 1.0
 var HP = 100
 var can_attack = true
 var hurt_time = 0.0
+var bob_phase = randf() * TAU
 
 func _ready():
 	add_to_group("zombie")
 
 func take_damage(amount):
+	$HurtSound.play()
 	HP -= amount
-	print("-", amount, " HP")
 	if HP <= 0:
-		animated_sprite.play("death")
+		animated_sprite.play("flying_death")
 		await animated_sprite.animation_finished
 		queue_free()
 	else:
 		hurt_time = 0.3
-		animated_sprite.play("hurt")
+		animated_sprite.play("flying_hurt")
 
 func _physics_process(delta):
 	if HP <= 0:
@@ -34,6 +35,8 @@ func _physics_process(delta):
 		return
 
 	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
 
 	if !can_attack:
 		return
@@ -41,19 +44,17 @@ func _physics_process(delta):
 	var distance = global_position.distance_to(player.global_position)
 	if distance < ATTACK_DISTANCE:
 		can_attack = false
-		animated_sprite.play("punch")
+		animated_sprite.play("flying_attack")
 		player.take_damage(DAMAGE)
 		await get_tree().create_timer(ATTACK_TIME).timeout
 		can_attack = true
 		return
 
+	bob_phase += delta * 3.0
 	var direction_to_player = (player.global_position - global_position).normalized()
-
-	velocity.x = direction_to_player.x * SPEED
+	velocity = direction_to_player * SPEED
+	velocity.y += sin(bob_phase) * 60.0
 	move_and_slide()
 
-	if velocity.x > 0:
-		animated_sprite.flip_h = false
-	elif velocity.x < 0:
-		animated_sprite.flip_h = true
-	animated_sprite.play("walk")
+	animated_sprite.flip_h = velocity.x < 0
+	animated_sprite.play("flying_walk")

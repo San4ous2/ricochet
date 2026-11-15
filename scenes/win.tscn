@@ -1,0 +1,86 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_end"]
+[ext_resource type="FontFile" uid="uid://d1l2t4o21e8e8" path="res://assets/fonts/Arcade Legacy.ttf" id="2_font"]
+[ext_resource type="AudioStream" path="res://assets/music/you-win-perfect_V02zaBxH.mp3" id="3_music"]
+
+[sub_resource type="StyleBoxFlat" id="btn"]
+bg_color = Color(0.8509804, 0.627451, 0.4, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.4, 0.22352941, 0.19215687, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="btn_hover"]
+bg_color = Color(0.6528047, 0.4544469, 0.24414957, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.35, 0.1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Win" type="Node2D"]
+script = ExtResource("1_end")
+retry_scene = "res://scenes/menu.tscn"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_music")
+autoplay = true
+
+[node name="Bg" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.02, 0.02, 0.07, 1)
+
+[node name="Title" type="Label" parent="."]
+offset_top = 180.0
+offset_right = 1152.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0, 0.7921569, 0.13725491, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 96
+text = "YOU WIN"
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="."]
+offset_left = 440.0
+offset_top = 360.0
+offset_right = 712.0
+offset_bottom = 440.0
+theme_override_colors/font_color = Color(0.4, 0.22352941, 0.19215687, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.22352941, 0.19215687, 1)
+theme_override_colors/font_pressed_color = Color(0.4, 0.22352941, 0.19215687, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("btn")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_hover")
+text = "AGAIN"
+
+[node name="Menu" type="Button" parent="."]
+offset_left = 440.0
+offset_top = 470.0
+offset_right = 712.0
+offset_bottom = 550.0
+theme_override_colors/font_color = Color(0.4, 0.22352941, 0.19215687, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.22352941, 0.19215687, 1)
+theme_override_colors/font_pressed_color = Color(0.4, 0.22352941, 0.19215687, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("btn")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_hover")
+text = "MENU"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

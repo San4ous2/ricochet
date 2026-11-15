@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://ihkoskfdyot2" path="res://scenes/zombie.tscn" id="1_z"]
+[ext_resource type="Script" path="res://scripts/zombie_fly.gd" id="2_fly"]
+
+[node name="zombie_fly" instance=ExtResource("1_z")]
+script = ExtResource("2_fly")

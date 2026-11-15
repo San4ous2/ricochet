@@ -6,8 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://dcbhhit18vxi8" path="res://assets/parallax_desert/CanyonDesert-BGlayer5.png" id="4_uaw8k"]
 [ext_resource type="PackedScene" uid="uid://cb163b57c4hkb" path="res://scenes/player.tscn" id="5_player"]
 [ext_resource type="Script" uid="uid://dmm5ppivj18pv" path="res://scripts/camera_follow.gd" id="6_cam"]
-[ext_resource type="PackedScene" path="res://scenes/cactus.tscn" id="7_cactus"]
+[ext_resource type="Texture2D" uid="uid://c5px5gbksb5b5" path="res://assets/parallax_desert/cactus1.png" id="8_lt7nq"]
 [ext_resource type="Script" uid="uid://dfeg4p8vvhkyc" path="res://scripts/spawner.gd" id="9_spawn"]
+[ext_resource type="Texture2D" uid="uid://c8028vfxhisbh" path="res://assets/parallax_desert/cactus3.png" id="9_v7x2m"]
+[ext_resource type="Texture2D" uid="uid://c5nb4pg0tmmnr" path="res://assets/parallax_desert/cactus2.png" id="10_cdqji"]
+[ext_resource type="Texture2D" uid="uid://cv6yn1qi4grha" path="res://assets/health_bar.png" id="11_hp_tex"]
+[ext_resource type="Script" uid="uid://b2sl8yub2rmcc" path="res://scripts/health_bar.gd" id="12_hp"]
+[ext_resource type="Script" uid="uid://d2wy1747hfvio" path="res://scripts/rock_trigger.gd" id="13_rock"]
+[ext_resource type="Texture2D" uid="uid://dc5o00wnwnsqy" path="res://assets/mount.png" id="14_nxbbw"]
+[ext_resource type="FontFile" uid="uid://d1l2t4o21e8e8" path="res://assets/fonts/Arcade Legacy.ttf" id="15_font"]
+[ext_resource type="AudioStream" uid="uid://biaw1oj13wpv2" path="res://assets/music/outside.ogg" id="16_music"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkgx0"]
 size = Vector2(11622.5, 181)
@@ -15,40 +23,52 @@ size = Vector2(11622.5, 181)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uaw8k"]
 size = Vector2(25, 1675)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt7nq"]
+size = Vector2(204, 272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7x2m"]
+size = Vector2(201.5, 165)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdqji"]
+size = Vector2(180, 261)
+
+[sub_resource type="RectangleShape2D" id="trigger_shape"]
+size = Vector2(120, 400)
+
 [node name="outside" type="Node2D" unique_id=370846507]
 position = Vector2(1, 0)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=754599609]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=117564020]
-motion_scale = Vector2(0.1, 1)
+motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(5038, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=651048003]
 texture_filter = 1
-position = Vector2(1772.9999, -834.75)
-scale = Vector2(7.871875, 6.4863286)
+position = Vector2(1772.9999, 648)
+scale = Vector2(7.871875, 6)
 texture = ExtResource("1_udpx5")
 
-[node name="CanyonDesertBGlayer5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1234713403]
-texture_filter = 1
-position = Vector2(2537, -1065)
-scale = Vector2(10.329687, 9.786865)
-texture = ExtResource("4_uaw8k")
-
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1307762978]
-motion_scale = Vector2(0.25, 1)
+motion_scale = Vector2(0.25, 0.1)
 motion_mirroring = Vector2(3594, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1438889953]
 texture_filter = 1
-position = Vector2(1331.9999, -987)
+position = Vector2(1331.9999, 59)
 scale = Vector2(5.615625, 4.9179688)
 texture = ExtResource("2_7r1kg")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=831464182]
 motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(4415, 0)
+
+[node name="CanyonDesertBGlayer5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1234713403]
+texture_filter = 1
+position = Vector2(2537, -1091)
+scale = Vector2(10.329687, 9.786865)
+texture = ExtResource("4_uaw8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1629418475]
 texture_filter = 1
@@ -65,13 +85,15 @@ position = Vector2(1767.5, -552.5)
 scale = Vector2(7.8890624, 4.2773438)
 texture = ExtResource("4_uaw8k")
 
-[node name="DesertSpawn" type="Node2D" parent="." unique_id=1415443955]
-position = Vector2(6500, -161)
-script = ExtResource("9_spawn")
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1083815219]
 
 [node name="player" parent="." unique_id=1879092622 instance=ExtResource("5_player")]
 position = Vector2(227, -314.00003)
 scale = Vector2(4.5, 4.5)
+
+[node name="DesertSpawn" type="Node2D" parent="." unique_id=1415443955]
+position = Vector2(3678, -150)
+script = ExtResource("9_spawn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1343890005]
 position = Vector2(207, -655)
@@ -92,18 +114,140 @@ position = Vector2(-758, -431)
 position = Vector2(-1, -404.5)
 shape = SubResource("RectangleShape2D_uaw8k")
 
-[node name="Cactus1" parent="." unique_id=1856121044 instance=ExtResource("7_cactus")]
-position = Vector2(1500, -161)
-scale = Vector2(8, 8)
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1128652826]
+position = Vector2(10477, -191)
 
-[node name="Cactus2" parent="." unique_id=1269744441 instance=ExtResource("7_cactus")]
-position = Vector2(2800, -161)
-scale = Vector2(7, 7)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=598689617]
+position = Vector2(-791, -803)
+shape = SubResource("RectangleShape2D_uaw8k")
 
-[node name="Cactus3" parent="." unique_id=363667156 instance=ExtResource("7_cactus")]
-position = Vector2(4300, -161)
-scale = Vector2(9, 9)
+[node name="Cactus1" type="StaticBody2D" parent="." unique_id=926761863]
+position = Vector2(143, -28)
+collision_layer = 16
 
-[node name="Cactus4" parent="." unique_id=857042513 instance=ExtResource("7_cactus")]
-position = Vector2(5600, -161)
-scale = Vector2(7.5, 7.5)
+[node name="Sprite2D" type="Sprite2D" parent="Cactus1" unique_id=991725584]
+texture_filter = 1
+position = Vector2(1156.0001, -259)
+scale = Vector2(8.25, 8.53125)
+texture = ExtResource("8_lt7nq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus1" unique_id=1355778873]
+position = Vector2(1153, -258)
+shape = SubResource("RectangleShape2D_lt7nq")
+
+[node name="Cactus3" type="StaticBody2D" parent="." unique_id=1893109430]
+position = Vector2(834, -430)
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="Cactus3" unique_id=1057222683]
+texture_filter = 1
+position = Vector2(1320.9999, 143.00002)
+scale = Vector2(8.343749, 9.46875)
+texture = ExtResource("9_v7x2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus3" unique_id=1941602487]
+position = Vector2(1327.25, 215.5)
+shape = SubResource("RectangleShape2D_v7x2m")
+
+[node name="Cactus2" type="StaticBody2D" parent="." unique_id=709043002]
+position = Vector2(361, 0)
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="Cactus2" unique_id=646383770]
+texture_filter = 1
+position = Vector2(2660, -282)
+scale = Vector2(7.6875, 9.3125)
+texture = ExtResource("10_cdqji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus2" unique_id=938055999]
+position = Vector2(2651, -259.5)
+shape = SubResource("RectangleShape2D_cdqji")
+
+[node name="Cactus4" type="StaticBody2D" parent="." unique_id=645722468]
+position = Vector2(5315, 48)
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="Cactus4" unique_id=1525804166]
+texture_filter = 1
+position = Vector2(1156.0001, -259)
+scale = Vector2(8.25, 8.53125)
+texture = ExtResource("8_lt7nq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus4" unique_id=989790614]
+position = Vector2(1153, -258)
+shape = SubResource("RectangleShape2D_lt7nq")
+
+[node name="Cactus5" type="StaticBody2D" parent="." unique_id=1502844710]
+position = Vector2(4118, -383)
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="Cactus5" unique_id=2081885565]
+texture_filter = 1
+position = Vector2(1320.9999, 143.00002)
+scale = Vector2(8.343749, 9.46875)
+texture = ExtResource("9_v7x2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus5" unique_id=1199406154]
+position = Vector2(1327.25, 215.5)
+shape = SubResource("RectangleShape2D_v7x2m")
+
+[node name="Cactus6" type="StaticBody2D" parent="." unique_id=1648281286]
+position = Vector2(5179, 48)
+collision_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="Cactus6" unique_id=514619796]
+texture_filter = 1
+position = Vector2(2660, -282)
+scale = Vector2(7.6875, 9.3125)
+texture = ExtResource("10_cdqji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cactus6" unique_id=988735699]
+position = Vector2(2651, -259.5)
+shape = SubResource("RectangleShape2D_cdqji")
+
+[node name="HealthUI" type="CanvasLayer" parent="." unique_id=1100545430]
+
+[node name="HealthBar" type="TextureProgressBar" parent="HealthUI" unique_id=1353272007]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 118.0
+offset_bottom = 49.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("11_hp_tex")
+script = ExtResource("12_hp")
+
+[node name="Rock" type="StaticBody2D" parent="." unique_id=980379551]
+position = Vector2(9900, -161)
+collision_layer = 3
+script = ExtResource("13_rock")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rock" unique_id=2147187423]
+position = Vector2(1092.9999, -1294)
+scale = Vector2(4.759658, 10.439814)
+texture = ExtResource("14_nxbbw")
+
+[node name="Hint" type="Label" parent="Rock" unique_id=1010739027]
+visible = false
+offset_left = -250.0
+offset_top = -520.0
+offset_right = 550.0
+offset_bottom = -420.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.04, 0.04, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("15_font")
+theme_override_font_sizes/font_size = 40
+text = "HOLD SPACE TO JUMP HIGHER"
+
+[node name="Trigger" type="Area2D" parent="Rock" unique_id=387811807]
+position = Vector2(-300, 0)
+
+[node name="Shape" type="CollisionShape2D" parent="Rock/Trigger" unique_id=1008324476]
+position = Vector2(0, -200)
+shape = SubResource("trigger_shape")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=311706802]
+stream = ExtResource("16_music")
+volume_db = -13.488
+autoplay = true

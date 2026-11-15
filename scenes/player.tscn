@@ -1,13 +1,52 @@
 [gd_scene format=3 uid="uid://cb163b57c4hkb"]
 
 [ext_resource type="Script" uid="uid://nk6rgww5b3p7" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://q5vly0mkelx5" path="res://assets/Death.png" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://rhl2cbhrk5c4" path="res://assets/Walk.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://0e2yrv20h4x8" path="res://assets/Idle.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dlg3jf4d0yvi3" path="res://assets/Jump.png" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cuuaavc17l3w7" path="res://assets/player_hurt.png" id="3_smehm"]
 [ext_resource type="Texture2D" uid="uid://bmpg3mat0w81a" path="res://assets/revolver.png" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://baxxbyxg6c8m8" path="res://assets/music/revolver-shoot.mp3" id="6_shot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(23, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hax0n"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4otl"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2b1d"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs1tg"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
+atlas = ExtResource("2_fjrip")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giy8y"]
+atlas = ExtResource("3_smehm")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdfoy"]
+atlas = ExtResource("3_smehm")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhpqf"]
+atlas = ExtResource("3_smehm")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5jhy"]
+atlas = ExtResource("3_smehm")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("3_qhqgy")
@@ -149,6 +188,43 @@ region = Rect2(1408, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hax0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4otl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2b1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs1tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dvfe")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}],
+"loop": 1,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dqkch")
 }, {
 "duration": 1.0,
@@ -267,6 +343,7 @@ animations = [{
 
 [node name="player" type="CharacterBody2D" unique_id=144424859 groups=["player"]]
 position = Vector2(-1, -29)
+collision_mask = 33
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1522935762]
@@ -287,3 +364,7 @@ texture_filter = 1
 position = Vector2(30, 3)
 scale = Vector2(0.265625, 0.25)
 texture = ExtResource("5_qlg0r")
+
+[node name="Shot" type="AudioStreamPlayer" parent="." unique_id=1008056885]
+stream = ExtResource("6_shot")
+volume_db = -8.164
