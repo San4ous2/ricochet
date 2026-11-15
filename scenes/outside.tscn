@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://br67u6pw6a4lo"]
+
+[ext_resource type="Texture2D" uid="uid://baexsl47m7oqp" path="res://assets/parallax_desert/CanyonDesert-BGlayer1.png" id="1_udpx5"]
+[ext_resource type="Texture2D" uid="uid://8gnmxm46fci7" path="res://assets/parallax_desert/CanyonDesert-BGlayer2.png" id="2_7r1kg"]
+[ext_resource type="Texture2D" uid="uid://bfrp20m1eel52" path="res://assets/parallax_desert/CanyonDesert-BGlayer3.png" id="3_bkgx0"]
+[ext_resource type="Texture2D" uid="uid://dcbhhit18vxi8" path="res://assets/parallax_desert/CanyonDesert-BGlayer5.png" id="4_uaw8k"]
+[ext_resource type="PackedScene" uid="uid://cb163b57c4hkb" path="res://scenes/player.tscn" id="5_player"]
+[ext_resource type="Script" uid="uid://dmm5ppivj18pv" path="res://scripts/camera_follow.gd" id="6_cam"]
+[ext_resource type="PackedScene" path="res://scenes/cactus.tscn" id="7_cactus"]
+[ext_resource type="Script" uid="uid://dfeg4p8vvhkyc" path="res://scripts/spawner.gd" id="9_spawn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkgx0"]
+size = Vector2(11622.5, 181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaw8k"]
+size = Vector2(25, 1675)
+
+[node name="outside" type="Node2D" unique_id=370846507]
+position = Vector2(1, 0)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=754599609]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=117564020]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(5038, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=651048003]
+texture_filter = 1
+position = Vector2(1772.9999, -834.75)
+scale = Vector2(7.871875, 6.4863286)
+texture = ExtResource("1_udpx5")
+
+[node name="CanyonDesertBGlayer5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1234713403]
+texture_filter = 1
+position = Vector2(2537, -1065)
+scale = Vector2(10.329687, 9.786865)
+texture = ExtResource("4_uaw8k")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1307762978]
+motion_scale = Vector2(0.25, 1)
+motion_mirroring = Vector2(3594, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1438889953]
+texture_filter = 1
+position = Vector2(1331.9999, -987)
+scale = Vector2(5.615625, 4.9179688)
+texture = ExtResource("2_7r1kg")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=831464182]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(4415, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1629418475]
+texture_filter = 1
+position = Vector2(1542, -839.00006)
+scale = Vector2(6.8984375, 5.0625005)
+texture = ExtResource("3_bkgx0")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1027109263]
+motion_mirroring = Vector2(5049, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=2014688172]
+texture_filter = 1
+position = Vector2(1767.5, -552.5)
+scale = Vector2(7.8890624, 4.2773438)
+texture = ExtResource("4_uaw8k")
+
+[node name="DesertSpawn" type="Node2D" parent="." unique_id=1415443955]
+position = Vector2(6500, -161)
+script = ExtResource("9_spawn")
+
+[node name="player" parent="." unique_id=1879092622 instance=ExtResource("5_player")]
+position = Vector2(227, -314.00003)
+scale = Vector2(4.5, 4.5)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1343890005]
+position = Vector2(207, -655)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("6_cam")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=459775701]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=931815584]
+position = Vector2(5068.75, -71)
+shape = SubResource("RectangleShape2D_bkgx0")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=60780514]
+position = Vector2(-758, -431)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1452837429]
+position = Vector2(-1, -404.5)
+shape = SubResource("RectangleShape2D_uaw8k")
+
+[node name="Cactus1" parent="." unique_id=1856121044 instance=ExtResource("7_cactus")]
+position = Vector2(1500, -161)
+scale = Vector2(8, 8)
+
+[node name="Cactus2" parent="." unique_id=1269744441 instance=ExtResource("7_cactus")]
+position = Vector2(2800, -161)
+scale = Vector2(7, 7)
+
+[node name="Cactus3" parent="." unique_id=363667156 instance=ExtResource("7_cactus")]
+position = Vector2(4300, -161)
+scale = Vector2(9, 9)
+
+[node name="Cactus4" parent="." unique_id=857042513 instance=ExtResource("7_cactus")]
+position = Vector2(5600, -161)
+scale = Vector2(7.5, 7.5)
