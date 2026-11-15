@@ -1,6 +1,5 @@
 extends Area2D
 
-# переход на следующую локацию, когда все зомби перебиты
 @export_file("*.tscn") var next_scene: String
 
 func _physics_process(_delta):

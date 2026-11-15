@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bu4xmhyltd15n" path="res://assets/punch.png" id="2_xepks"]
 [ext_resource type="Texture2D" uid="uid://cdbv15xcacckn" path="res://assets/Attack_flying.png" id="3_aetfh"]
 [ext_resource type="Texture2D" uid="uid://b8c17e1dqxjrx" path="res://assets/Hurt.png" id="3_ycv6i"]
-[ext_resource type="AudioStream" path="res://assets/music/terraria-zombie.mp3" id="4_hurtsnd"]
+[ext_resource type="AudioStream" uid="uid://7w7utmtoufxa" path="res://assets/music/terraria-zombie.mp3" id="4_hurtsnd"]
 [ext_resource type="Texture2D" uid="uid://bsmlt44cref1g" path="res://assets/Dead_flying.png" id="4_jjlcg"]
 [ext_resource type="Texture2D" uid="uid://bsqv817jfipvw" path="res://assets/Hurt_flying.png" id="5_iblsu"]
 [ext_resource type="Texture2D" uid="uid://dj6jm1tkr2s3a" path="res://assets/flying_walk.png" id="6_ida1p"]
@@ -356,8 +356,9 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_httt1")
 
-[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=12013046]
 stream = ExtResource("4_hurtsnd")
+volume_db = -15.263
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2063889606]
 position = Vector2(8, -125.5)
@@ -368,4 +369,4 @@ texture_filter = 1
 position = Vector2(30, -237)
 scale = Vector2(3.7568355, 3.7021492)
 sprite_frames = SubResource("SpriteFrames_u6hpf")
-animation = &"flying_walk"
+animation = &"walk"
